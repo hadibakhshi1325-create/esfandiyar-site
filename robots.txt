@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://esfandiyar.hadibakhshi1325.workers.dev/sitemap.xml

@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10243a">
+  <meta name="description" content="گروه ثبتی و حقوقی اسفندیار؛ خدمات ثبت شرکت و تغییرات، اخذ رتبه پیمانکاری، صلاحیت ایمنی، امور مالیاتی و خدمات ثبتی و حقوقی.">
+  <meta name="keywords" content="ثبت شرکت، ثبت تغییرات، رتبه پیمانکاری، صلاحیت ایمنی، کارت الکترونیک شهرداری، خدمات مالیاتی">
+  <title>گروه ثبتی و حقوقی اسفندیار | خدمات تخصصی ثبتی و حقوقی</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap');
+    :root{--navy:#10243a;--blue:#174d78;--gold:#c6a76a;--ink:#1c2b39;--muted:#647484;--paper:#f5f7fa;--line:#e4e9ef}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:'Vazirmatn',Tahoma,sans-serif;color:var(--ink);background:#fff;line-height:1.9}
+    a{color:inherit;text-decoration:none}.wrap{width:min(1140px,92%);margin:auto}
+    .top{background:#0b1b2c;color:#dbe5ef;font-size:13px;padding:8px 0}.top .wrap{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    header{position:sticky;top:0;z-index:10;background:#ffffffed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+    nav{display:flex;align-items:center;justify-content:space-between;min-height:78px;gap:20px}
+    .brand{display:flex;align-items:center;gap:12px;font-weight:800;color:var(--navy);font-size:19px}
+    .seal{width:46px;height:46px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;color:var(--gold);font-size:23px;position:relative}
+    .seal:after{content:"";position:absolute;inset:5px;border:1px solid var(--gold);border-radius:50%}
+    .links{display:flex;gap:25px;font-size:14px;color:#405366}.links a:hover{color:var(--blue)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:11px 20px;border-radius:9px;background:var(--gold);color:#172638;font-weight:700;border:0;cursor:pointer;font-family:inherit}
+    .btn.dark{background:var(--navy);color:white}.btn.outline{background:transparent;border:1px solid #ffffff8a;color:white}
+    .hero{background:linear-gradient(115deg,#0b1b2c 0%,#143d60 68%,#1c5278 100%);color:white;position:relative;overflow:hidden}
+    .hero:before,.hero:after{content:"";position:absolute;border:1px solid #ffffff18;border-radius:50%;width:430px;height:430px;left:-100px;top:-210px}
+    .hero:after{width:580px;height:580px;left:-175px;top:-280px}
+    .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;align-items:center;gap:55px;padding:86px 0 92px;position:relative}
+    .eyebrow{color:#e2c78e;font-weight:700;font-size:14px;letter-spacing:.2px}
+    h1{font-size:clamp(30px,4.5vw,49px);line-height:1.55;margin:12px 0 15px;font-weight:800}
+    .hero p{color:#d6e2ed;max-width:680px;margin:0 0 26px;font-size:16px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
+    .hero-card{background:#ffffff12;border:1px solid #ffffff30;border-radius:20px;padding:28px;text-align:center;backdrop-filter:blur(5px)}
+    .hero-card .bigseal{width:118px;height:118px;border:2px solid var(--gold);border-radius:50%;margin:0 auto 15px;display:grid;place-items:center;font-size:55px;color:#e1c58d;box-shadow:inset 0 0 0 7px #ffffff08}
+    .hero-card strong{display:block;font-size:20px}.hero-card small{color:#d3e0eb}
+    .trust{background:#fff;box-shadow:0 12px 35px #132b4210;margin-top:-28px;position:relative;border-radius:14px;display:grid;grid-template-columns:repeat(3,1fr);padding:20px;gap:10px}
+    .trust div{text-align:center;border-left:1px solid var(--line)}.trust div:last-child{border:0}.trust b{display:block;color:var(--navy);font-size:16px}.trust span{font-size:12px;color:var(--muted)}
+    section{padding:76px 0}.section-head{text-align:center;max-width:720px;margin:0 auto 35px}.section-head .eyebrow{color:var(--blue)}h2{font-size:30px;color:var(--navy);margin:5px 0 10px}.section-head p{color:var(--muted);margin:0}
+    .services{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+    .service{border:1px solid var(--line);border-radius:14px;padding:23px;background:#fff;transition:.2s;min-height:160px}
+    .service:hover{transform:translateY(-4px);box-shadow:0 12px 28px #10243a12;border-color:#c9d7e4}
+    .ico{width:43px;height:43px;border-radius:11px;background:#edf3f8;color:var(--blue);display:grid;place-items:center;font-size:21px;margin-bottom:12px}
+    .service h3{margin:0 0 5px;color:var(--navy);font-size:16px}.service p{margin:0;color:var(--muted);font-size:13px}
+    .about{background:var(--paper)}.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:45px;align-items:center}
+    .about-panel{background:var(--navy);color:white;padding:35px;border-radius:18px;position:relative;overflow:hidden}
+    .about-panel:after{content:"⚖";font-size:170px;color:#ffffff0c;position:absolute;left:10px;bottom:-70px}
+    .about-panel h3{font-size:24px;margin:0 0 10px}.about-panel p{color:#d3deea;margin:0}
+    .checks{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}.checks span:before{content:"✓";color:var(--gold);font-weight:800;margin-left:8px}
+    .about-copy p{color:var(--muted)}.about-copy h2{text-align:right}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.step{padding:22px;border-radius:13px;background:#f7f9fb;border:1px solid var(--line)}.num{font-size:26px;font-weight:800;color:var(--gold)}
+    .contact{background:linear-gradient(115deg,#10243a,#174d78);color:#fff}.contact h2{color:#fff}.contact .section-head p{color:#d1deea}
+    .contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:28px}
+    .contact-info,.formbox{background:#ffffff12;border:1px solid #ffffff25;border-radius:16px;padding:27px}
+    .contact-info h3,.formbox h3{margin-top:0}.contact-line{padding:10px 0;border-bottom:1px solid #ffffff20;color:#e0e9f0}.contact-line:last-child{border:0}
+    .contact-line b{color:#e3c98f;display:inline-block;min-width:95px}
+    form{display:grid;grid-template-columns:1fr 1fr;gap:13px}label{font-size:13px;color:#e2eaf1}input,select,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #ffffff45;background:#fff;color:#1b2b3b;font:inherit;margin-top:5px}textarea{min-height:100px;resize:vertical}.full{grid-column:1/-1}
+    footer{background:#091725;color:#c4d0dc;padding:24px 0;font-size:13px}.foot{display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap}
+    .float{position:fixed;left:18px;bottom:18px;z-index:20;background:#20a464;color:white;padding:12px 17px;border-radius:30px;box-shadow:0 8px 24px #0003;font-weight:700}
+    @media(max-width:800px){.links{display:none}.hero-grid,.about-grid,.contact-grid{grid-template-columns:1fr}.hero-grid{padding:58px 0}.hero-card{max-width:330px}.services{grid-template-columns:repeat(2,1fr)}.steps{grid-template-columns:1fr}.about-panel{order:2}}
+    @media(max-width:520px){.services{grid-template-columns:1fr}.trust{grid-template-columns:1fr}.trust div{border:0;border-bottom:1px solid var(--line);padding:8px}.trust div:last-child{border:0}section{padding:55px 0}form{grid-template-columns:1fr}.full{grid-column:auto}.top .wrap{justify-content:center}.brand{font-size:16px}}
+  </style>
+</head>
+<body>
+  <div class="top"><div class="wrap"><span>گروه ثبتی و حقوقی اسفندیار</span><span>پاسخگویی و مشاوره: ۰۹۳۷۲۰۸۴۷۲۴</span></div></div>
+  <header><div class="wrap"><nav>
+    <a class="brand" href="#home"><span class="seal">§</span><span>گروه ثبتی و حقوقی اسفندیار</span></a>
+    <div class="links"><a href="#home">صفحه اصلی</a><a href="#services">خدمات ما</a><a href="#about">درباره ما</a><a href="#contact">تماس با ما</a></div>
+    <a class="btn dark" href="tel:09372084724">تماس با ما</a>
+  </nav></div></header>
+  <main>
+    <section class="hero" id="home"><div class="wrap hero-grid">
+      <div><div class="eyebrow">خدمات تخصصی ثبتی، حقوقی و اداری</div>
+        <h1>مسیر امور ثبتی و حقوقی کسب‌وکار شما، با اطمینان بیشتر</h1>
+        <p>گروه ثبتی و حقوقی اسفندیار آماده ارائه خدمات تخصصی در زمینه ثبت شرکت، تغییرات، اخذ رتبه و صلاحیت‌ها، امور مالیاتی و خدمات مرتبط با کسب‌وکارهاست.</p>
+        <div class="hero-actions"><a class="btn" href="#contact">ثبت درخواست مشاوره</a><a class="btn outline" href="https://wa.me/989372084724" target="_blank" rel="noopener">گفت‌وگو در واتساپ</a></div>
+      </div>
+      <div class="hero-card"><div class="bigseal">§</div><strong>اسفندیار</strong><small>همراه امور ثبتی و حقوقی کسب‌وکار شما</small><hr style="border:0;border-top:1px solid #ffffff30;margin:20px 0"><span style="color:#e3c98f">با مدیریت مهندس بخشی</span></div>
+    </div></section>
+    <div class="wrap"><div class="trust"><div><b>خدمات تخصصی</b><span>پیگیری امور ثبتی و اداری</span></div><div><b>پاسخگویی مستقیم</b><span>ارتباط تلفنی و آنلاین</span></div><div><b>همراه کسب‌وکارها</b><span>از ثبت تا اخذ صلاحیت‌ها</span></div></div></div>
+    <section id="services"><div class="wrap"><div class="section-head"><div class="eyebrow">آنچه ارائه می‌کنیم</div><h2>خدمات گروه اسفندیار</h2><p>برای دریافت جزئیات هر خدمت و بررسی شرایط پرونده، با کارشناسان مجموعه تماس بگیرید.</p></div>
+      <div class="services">
+        <article class="service"><div class="ico">▣</div><h3>اخذ و واگذاری رتبه پیمانکاری</h3><p>پیگیری امور مرتبط با رتبه‌بندی شرکت‌های پیمانکاری.</p></article>
+        <article class="service"><div class="ico">▤</div><h3>کارت الکترونیک شهرداری تهران</h3><p>ارائه خدمات مرتبط با اخذ کارت الکترونیک شهرداری تهران.</p></article>
+        <article class="service"><div class="ico">✦</div><h3>رتبه معاونت خدمات شهری</h3><p>پیگیری فرایند اخذ رتبه از معاونت خدمات شهری.</p></article>
+        <article class="service"><div class="ico">⌁</div><h3>رتبه سازمان آب و فاضلاب</h3><p>خدمات مرتبط با اخذ رتبه سازمان آب و فاضلاب کشور.</p></article>
+        <article class="service"><div class="ico">✓</div><h3>گواهی صلاحیت ایمنی</h3><p>راهنمایی و پیگیری امور دریافت گواهی صلاحیت ایمنی.</p></article>
+        <article class="service"><div class="ico">▧</div><h3>مجوز درگاه ملی مجوزها</h3><p>پیگیری درخواست‌ها و مجوزهای قابل ارائه از درگاه ملی مجوزها.</p></article>
+        <article class="service"><div class="ico">⌂</div><h3>ثبت شرکت</h3><p>انجام امور مربوط به تأسیس و ثبت انواع شرکت‌ها.</p></article>
+        <article class="service"><div class="ico">↻</div><h3>ثبت تغییرات شرکت</h3><p>پیگیری صورت‌جلسات و تغییرات ثبتی شرکت‌ها.</p></article>
+        <article class="service"><div class="ico">▥</div><h3>ثبت صورت‌وضعیت</h3><p>ثبت صورت‌وضعیت در سامانه معاملات.</p></article>
+        <article class="service"><div class="ico">▣</div><h3>اخذ و فعال‌سازی توکن</h3><p>راهنمایی و خدمات مرتبط با توکن و امضای الکترونیک.</p></article>
+        <article class="service"><div class="ico">٪</div><h3>حسابرسی و امور مالیاتی</h3><p>خدمات حسابرسی و پیگیری امور مالیاتی کسب‌وکارها.</p></article>
+        <article class="service"><div class="ico">▤</div><h3>بیمه تأمین اجتماعی</h3><p>ارائه خدمات و پیگیری امور مرتبط با تأمین اجتماعی.</p></article>
+        <article class="service"><div class="ico">♙</div><h3>تأمین مهندس امتیازآور</h3><p>معرفی و تأمین مهندس امتیازآور متناسب با شرایط پرونده.</p></article>
+      </div>
+    </div></section>
+    <section class="about" id="about"><div class="wrap about-grid">
+      <div class="about-copy"><div class="eyebrow">درباره مجموعه</div><h2>همراه مطمئن شما در امور ثبتی و اداری</h2><p>گروه ثبتی و حقوقی اسفندیار با تمرکز بر خدمات ثبتی، رتبه‌بندی، مجوزها و امور مالی و بیمه‌ای، تلاش می‌کند مسیر پیگیری امور کسب‌وکارها را روشن‌تر و منظم‌تر کند.</p><p>برای بررسی شرایط، مدارک موردنیاز و زمان‌بندی هر خدمت، درخواست خود را ثبت کنید تا راهنمایی لازم ارائه شود.</p><a class="btn dark" href="#contact">درخواست بررسی پرونده</a></div>
+      <div class="about-panel"><h3>گروه ثبتی و حقوقی اسفندیار</h3><p>ارائه خدمات تخصصی به اشخاص و شرکت‌ها با مدیریت مهندس بخشی.</p><div class="checks"><span>ثبت و تغییرات شرکت</span><span>رتبه و صلاحیت‌ها</span><span>امور مالیاتی</span><span>خدمات اداری و بیمه</span></div></div>
+    </div></section>
+    <section><div class="wrap"><div class="section-head"><div class="eyebrow">شروع همکاری</div><h2>فرایند ثبت درخواست</h2><p>برای شروع، کافی است درخواست خود را برای ما ارسال کنید.</p></div><div class="steps">
+      <div class="step"><div class="num">۰۱</div><h3>انتخاب خدمت</h3><p>نوع خدمت موردنیاز خود را مشخص کنید.</p></div>
+      <div class="step"><div class="num">۰۲</div><h3>ارسال درخواست</h3><p>اطلاعات تماس و توضیح کوتاهی از پرونده را ارسال کنید.</p></div>
+      <div class="step"><div class="num">۰۳</div><h3>مشاوره و پیگیری</h3><p>برای بررسی شرایط و مراحل بعدی با شما تماس گرفته می‌شود.</p></div>
+    </div></div></section>
+    <section class="contact" id="contact"><div class="wrap"><div class="section-head"><div class="eyebrow">ارتباط با ما</div><h2>درخواست مشاوره و خدمات</h2><p>برای دریافت راهنمایی، با ما تماس بگیرید یا فرم زیر را تکمیل کنید.</p></div>
+      <div class="contact-grid">
+        <div class="contact-info"><h3>راه‌های ارتباطی</h3>
+          <div class="contact-line"><b>مدیریت</b> مهندس بخشی</div>
+          <div class="contact-line"><b>تلفن همراه</b><a href="tel:09372084724">۰۹۳۷۲۰۸۴۷۲۴</a></div>
+          <div class="contact-line"><b>آدرس دفتر</b> تهران، نارمک، میدان هفت‌حوض، کوچه عظیم‌نیا</div>
+          <div class="contact-line"><b>تلفن ثابت</b><a href="tel:02177902572">۰۲۱۷۷۹۰۲۵۷۲</a></div>
+          <div class="contact-line"><b>واتساپ</b><a href="https://wa.me/989372084724" target="_blank" rel="noopener">۰۹۳۷۲۰۸۴۷۲۴</a></div>
+          <div class="contact-line"><b>تلگرام</b><a href="https://t.me/hadi_s_b98" target="_blank" rel="noopener">@hadi_s_b98</a></div>
+          <p style="font-size:12px;color:#cbd8e4">آدرس دفتر: تهران، نارمک، میدان هفت‌حوض، کوچه عظیم‌نیا. (بدون نمایش نقشه یا لوکیشن)</p>
+        </div>
+        <div class="formbox"><h3>فرم درخواست</h3>
+          <form id="requestForm">
+            <label>نام و نام خانوادگی<input name="name" required placeholder="نام شما"></label>
+            <label>شماره تماس<input name="phone" required inputmode="tel" placeholder="مثلاً ۰۹۱۲۱۲۳۴۵۶۷"></label>
+            <label class="full">خدمت موردنظر<select name="service"><option>ثبت شرکت</option><option>ثبت تغییرات</option><option>رتبه پیمانکاری</option><option>کارت الکترونیک شهرداری</option><option>صلاحیت ایمنی</option><option>مجوز درگاه ملی مجوزها</option><option>امور مالیاتی و حسابرسی</option><option>تأمین اجتماعی</option><option>تأمین مهندس امتیازآور</option><option>سایر خدمات</option></select></label>
+            <label class="full">توضیحات<textarea name="details" placeholder="توضیح کوتاهی درباره درخواست خود بنویسید"></textarea></label>
+            <button class="btn full" type="submit">ارسال درخواست در واتساپ</button>
+          </form>
+          <p style="font-size:11px;color:#d1deea;margin-bottom:0">با زدن دکمه، متن درخواست در واتساپ آماده ارسال می‌شود؛ ارسال نهایی را خودتان انجام می‌دهید.</p>
+        </div>
+      </div>
+    </div></section>
+  </main>
+  <footer><div class="wrap foot"><span>© گروه ثبتی و حقوقی اسفندیار — تمامی حقوق محفوظ است.</span><span>با مدیریت مهندس بخشی</span></div></footer>
+  <a class="float" href="https://wa.me/989372084724" target="_blank" rel="noopener">واتساپ اسفندیار</a>
+  <script>
+    document.getElementById('requestForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const f = new FormData(this);
+      const msg = `سلام، از طریق وب‌سایت گروه ثبتی و حقوقی اسفندیار درخواست مشاوره دارم.\nنام: ${f.get('name')}\nشماره تماس: ${f.get('phone')}\nخدمت: ${f.get('service')}\nتوضیحات: ${f.get('details') || 'ندارد'}`;
+      window.open('https://wa.me/989372084724?text=' + encodeURIComponent(msg), '_blank');
+    });
+  </script>
+</body>
+</html>
