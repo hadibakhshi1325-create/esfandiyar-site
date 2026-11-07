@@ -82,3 +82,5 @@ blockquote{margin:18px 0 22px;padding:14px 20px;border-right:4px solid var(--gol
 @media(max-width:560px){.services,.steps,.steps.four{grid-template-columns:1fr}.trust{grid-template-columns:1fr}.trust div{border:0;border-bottom:1px solid var(--line);padding:8px}.trust div:last-child{border:0}section{padding:54px 0}form{grid-template-columns:1fr}.full{grid-column:auto}.top .wrap{justify-content:center}.brand{font-size:16px}h2{font-size:25px}.checks{grid-template-columns:1fr}.fserv{columns:1}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 @counter-style persian{system:numeric;symbols:"۰" "۱" "۲" "۳" "۴" "۵" "۶" "۷" "۸" "۹"}
+
+.brand-mark{height:44px;width:auto;flex:none}.hero-logo{display:block;width:min(250px,100%);height:auto;margin:0 auto 14px}.foot-logo{width:150px;height:auto;margin-bottom:10px}

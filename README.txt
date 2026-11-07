@@ -1,9 +1,8 @@
 سایت چندصفحه‌ای گروه ثبتی و حقوقی اسفندیار
-دامنه: https://esfandiyar.hadibakhshi1325.workers.dev
+دامنه: https://esfandiyarco.ir
 
 - index.html صفحه اصلی است؛ services/ شامل ۱۳ صفحه خدمت است.
 - assets/img/manager.jpg عکس مدیر است (صفحه اصلی و درباره ما).
+- assets/img/logo-light.png لوگوی روشن (برای پس‌زمینه تیره)، logo-navy.png لوگوی سرمه‌ای (برای پس‌زمینه روشن)، logo-mark.png نشان هدر.
 - backup-original/index.html نسخه اصلی و دست‌نخورده قبلی است.
 - ویرایش شماره‌ها: جستجو و جایگزینی در همه صفحات (۰۹۳۷۲۰۸۴۷۲۴ / 989372084724 / 02177902572).
-
-j
