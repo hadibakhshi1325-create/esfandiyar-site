@@ -1,3 +1,4 @@
+
 :root{--navy:#0f2238;--navy-d:#0a1828;--blue:#174d78;--gold:#c6a76a;--gold-l:#e2c78e;--gold-d:#8a6d2f;--ink:#1c2b39;--muted:#5d6e7e;--paper:#f5f7fa;--line:#e4e9ef;--r:12px}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;font-family:'Vazirmatn',Tahoma,'Segoe UI',sans-serif;color:var(--ink);background:#fff;line-height:1.95;-webkit-text-size-adjust:100%}
