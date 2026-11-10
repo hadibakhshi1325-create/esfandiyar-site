@@ -85,5 +85,13 @@ blockquote{margin:18px 0 22px;padding:14px 20px;border-right:4px solid var(--gol
 
 .brand-mark{height:44px;width:auto;flex:none}.hero-logo{display:block;width:min(250px,100%);height:auto;margin:0 auto 14px}.foot-logo{width:150px;height:auto;margin-bottom:10px}
 
-/* تصاویر اختصاصی خدمات صفحه اصلی */
-.service-image{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;border-radius:12px;margin:0 0 14px}
+/* نمایش کامل تصاویر خدمات */
+.service-image{
+display:block;
+width:100%;
+height:180px;
+object-fit:contain;
+background:#f5f7fa;
+border-radius:12px;
+margin:0 0 14px;
+}
