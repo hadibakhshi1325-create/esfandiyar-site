@@ -1,7 +1,8 @@
 سایت چندصفحه‌ای موسسه ثبتی و حقوقی اسفندیار
 دامنه: https://esfandiyarco.ir
 
-- index.html صفحه اصلی است؛ services/ شامل ۱۳ صفحه خدمت، guide/ شامل راهنماهاست.
-- assets/img/mohandes-bakhshi-v2.jpg عکس مدیر، logo-*.png لوگوها.
-- backup-original/index.html نسخه اصلی و دست‌نخورده قبلی است.
-- ویرایش شماره‌ها: جستجو و جایگزینی در همه صفحات (۰۹۳۷۲۰۸۴۷۲۴ / 989372084724 / 02177902572).
+- بدون هیچ وابستگی به سرویس خارجی (فونت گوگل حذف شد) تا بدون VPN هم سریع باز شود.
+- index.html صفحه اصلی؛ services/ شامل ۱۳ صفحه خدمت؛ guide/ راهنماها.
+- assets/services/ تصویر خدمات؛ assets/img/ عکس مدیر و لوگوها.
+- _headers تنظیم کش مرورگر (Cloudflare).
+- backup-original/index.html نسخه اصلی قبلی.
