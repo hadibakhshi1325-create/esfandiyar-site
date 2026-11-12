@@ -16,8 +16,9 @@
       var svc=f.service.options[f.service.selectedIndex].text,d=f.details.value.trim()||'ندارد';
       var msg='سلام، از طریق وب‌سایت موسسه ثبتی و حقوقی اسفندیار درخواست مشاوره دارم.\nنام: '+name+'\nشماره تماس: '+phone+'\nخدمت: '+svc+'\nتوضیحات: '+d;
       var url=f.getAttribute('data-wa')+'?text='+encodeURIComponent(msg);
-      var w=window.open(url,'_blank','noopener');
-      st.innerHTML=w?'واتساپ باز شد؛ پیام را ارسال کنید.':'اگر واتساپ باز نشد، <a href="'+url+'" target="_blank" rel="noopener">اینجا بزنید</a>.';
+      var w=window.open(url,'_blank');
+      if(w){w.opener=null;st.textContent='واتساپ باز شد؛ پیام را ارسال کنید.';}
+      else{st.innerHTML='اگر واتساپ باز نشد، <a href="'+url+'" target="_blank" rel="noopener noreferrer">اینجا بزنید</a>.';}
     });
   });
 })();
