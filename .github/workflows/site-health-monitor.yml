@@ -4,6 +4,12 @@ on:
   schedule:
     - cron: "*/10 * * * *"
   workflow_dispatch:
+    inputs:
+      send_test_telegram:
+        description: "Send a test notification to the configured Telegram chat"
+        required: false
+        default: false
+        type: boolean
 
 permissions:
   contents: read
@@ -37,9 +43,9 @@ jobs:
             code=$?
             if [ "$code" -ne 0 ] || [ "$result" != "200" ]; then
               failed=1
-              report+=$'\n❌ '"$url"$' — HTTP '"$result"$' (curl exit '"$code"$')'
+              report+=$'\\n❌ '"$url"$' — HTTP '"$result"$' (curl exit '"$code"$')'
             else
-              report+=$'\n✅ '"$url"$' — HTTP 200'
+              report+=$'\\n✅ '"$url"$' — HTTP 200'
             fi
           done
           echo "failed=$failed" >> "$GITHUB_OUTPUT"
@@ -48,6 +54,22 @@ jobs:
             echo "$report"
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
+
+      - name: Send requested Telegram test message
+        if: github.event_name == 'workflow_dispatch' && inputs.send_test_telegram
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -z "$BOT_TOKEN" ] || [ -z "$CHAT_ID" ]; then
+            echo "::error::Telegram secrets are missing. Configure TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in repository Actions secrets."
+            exit 1
+          fi
+          curl --fail-with-body -sS --max-time 20 -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \\
+            --data-urlencode "chat_id=${CHAT_ID}" \\
+            --data-urlencode "text=🧪 پیام آزمایشی پایش سایت اسفندیار: اتصال GitHub Actions به تلگرام برقرار است. اجرای شماره ${GITHUB_RUN_NUMBER}."
 
       - name: Open or update outage incident
         if: steps.health.outputs.failed == '1'
@@ -60,10 +82,10 @@ jobs:
           gh label create site-health-outage --repo "$GH_REPO" --color D73A4A --description "Automated website availability incident" --force
           existing=$(gh issue list --repo "$GH_REPO" --state open --label site-health-outage --json number --jq '.[0].number')
           if [ -z "$existing" ]; then
-            gh issue create --repo "$GH_REPO" --title "Site health alert: esfandiyarco.ir" --label site-health-outage --body "Automated monitoring detected a failure.\n\n$REPORT"
+            gh issue create --repo "$GH_REPO" --title "Site health alert: esfandiyarco.ir" --label site-health-outage --body "Automated monitoring detected a failure.\\n\\n$REPORT"
             echo "NEW_INCIDENT=true" >> "$GITHUB_ENV"
           else
-            gh issue comment "$existing" --repo "$GH_REPO" --body "Repeated check still detects an issue:\n\n$REPORT"
+            gh issue comment "$existing" --repo "$GH_REPO" --body "Repeated check still detects an issue:\\n\\n$REPORT"
             echo "NEW_INCIDENT=false" >> "$GITHUB_ENV"
           fi
 
@@ -76,8 +98,8 @@ jobs:
         shell: bash
         run: |
           if [ -n "$BOT_TOKEN" ] && [ -n "$CHAT_ID" ]; then
-            curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-              --data-urlencode "chat_id=${CHAT_ID}" \
+            curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \\
+              --data-urlencode "chat_id=${CHAT_ID}" \\
               --data-urlencode "text=🚨 هشدار سلامت سایت اسفندیار:${REPORT}"
           else
             echo "::warning::Telegram secrets are not configured; incident is recorded in GitHub Issues."
@@ -104,7 +126,7 @@ jobs:
         shell: bash
         run: |
           if [ -n "$BOT_TOKEN" ] && [ -n "$CHAT_ID" ]; then
-            curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
-              --data-urlencode "chat_id=${CHAT_ID}" \
+            curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \\
+              --data-urlencode "chat_id=${CHAT_ID}" \\
               --data-urlencode "text=✅ سایت اسفندیار دوباره در دسترس است؛ صفحات پایش‌شده پاسخ HTTP 200 می‌دهند."
           fi
