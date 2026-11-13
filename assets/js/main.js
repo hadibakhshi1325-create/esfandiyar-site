@@ -18,7 +18,7 @@
     return String(value||'')
       .replace(/[۰-۹]/g,function(c){return String(fa.indexOf(c));})
       .replace(/[٠-٩]/g,function(c){return String(ar.indexOf(c));})
-      .replace(/[\\s\\-()]/g,'');
+      .replace(/[\s\-()]/g,'');
   }
 
   document.querySelectorAll('form[data-wa]').forEach(function(form){
@@ -48,7 +48,7 @@
           if(nameControl) nameControl.focus();
           return;
         }
-        if(!/^0\\d{10}$/.test(phone)){
+        if(!/^0\d{10}$/.test(phone)){
           status.textContent='شماره تماس باید ۱۱ رقم و با صفر شروع شود (مثلاً ۰۹۱۲۱۲۳۴۵۶۷).';
           if(phoneControl) phoneControl.focus();
           return;
@@ -60,7 +60,7 @@
 
         var service=serviceControl.options[serviceControl.selectedIndex].text;
         var details=detailsControl&&detailsControl.value.trim()?detailsControl.value.trim():'ندارد';
-        var message='سلام، از طریق وب‌سایت موسسه ثبتی و حقوقی اسفندیار درخواست مشاوره دارم.\\nنام: '+name+'\\nشماره تماس: '+phone+'\\nخدمت: '+service+'\\nتوضیحات: '+details;
+        var message='سلام، از طریق وب‌سایت موسسه ثبتی و حقوقی اسفندیار درخواست مشاوره دارم.\nنام: '+name+'\nشماره تماس: '+phone+'\nخدمت: '+service+'\nتوضیحات: '+details;
         var base=form.getAttribute('data-wa');
         if(!base){
           status.textContent='نشانی واتساپ تنظیم نشده است. لطفاً با شماره موسسه تماس بگیرید.';
