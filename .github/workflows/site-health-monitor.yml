@@ -57,6 +57,7 @@ jobs:
           REPORT: ${{ steps.health.outputs.report }}
         shell: bash
         run: |
+          gh label create site-health-outage --repo "$GH_REPO" --color D73A4A --description "Automated website availability incident" --force
           existing=$(gh issue list --repo "$GH_REPO" --state open --label site-health-outage --json number --jq '.[0].number')
           if [ -z "$existing" ]; then
             gh issue create --repo "$GH_REPO" --title "Site health alert: esfandiyarco.ir" --label site-health-outage --body "Automated monitoring detected a failure.\n\n$REPORT"
