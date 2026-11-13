@@ -82,10 +82,10 @@ jobs:
           gh label create site-health-outage --repo "$GH_REPO" --color D73A4A --description "Automated website availability incident" 2>/dev/null || true
           existing=$(gh issue list --repo "$GH_REPO" --state open --label site-health-outage --json number --jq '.[0].number')
           if [ -z "$existing" ]; then
-            gh issue create --repo "$GH_REPO" --title "Site health alert: esfandiyarco.ir" --label site-health-outage --body "Automated monitoring detected a failure.\n\n$REPORT"
+            gh issue create --repo "$GH_REPO" --title "Site health alert: esfandiyarco.ir" --label site-health-outage --body "$(printf '%b' "Automated monitoring detected a failure.\n\n$REPORT")"
             echo "NEW_INCIDENT=true" >> "$GITHUB_ENV"
           else
-            gh issue comment "$existing" --repo "$GH_REPO" --body "Repeated check still detects an issue:\n\n$REPORT"
+            gh issue comment "$existing" --repo "$GH_REPO" --body "$(printf '%b' "Repeated check still detects an issue:\n\n$REPORT")"
             echo "NEW_INCIDENT=false" >> "$GITHUB_ENV"
           fi
 
