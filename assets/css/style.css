@@ -994,3 +994,44 @@ margin:0 0 24px
 
 /* Basic form honeypot: visually hidden from people, still present for simple bots. */
 .hp-field{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important;}
+
+/* Preview and narrow-viewport layout hardening */
+html,body{
+  width:100%;
+  max-width:100%;
+}
+html{
+  overflow-x:clip;
+}
+body{
+  overflow-x:clip;
+}
+.wrap,
+.hero-grid,
+.trust,
+.services,
+.about-grid,
+.steps,
+.contact-grid,
+.page-grid,
+.fgrid,
+.mgr{
+  min-width:0;
+}
+.hero-grid>*,
+.trust>*,
+.services>*,
+.about-grid>*,
+.steps>*,
+.contact-grid>*,
+.page-grid>*,
+.fgrid>*,
+.mgr>*{
+  min-width:0;
+}
+img,svg{
+  max-width:100%;
+}
+@supports not (overflow-x:clip){
+  html,body{overflow-x:hidden;}
+}
