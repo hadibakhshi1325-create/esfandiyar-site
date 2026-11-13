@@ -1,0 +1,109 @@
+name: Site health monitor
+
+on:
+  schedule:
+    - cron: "*/10 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: site-health-monitor
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check critical pages
+        id: health
+        shell: bash
+        run: |
+          set +e
+          urls=(
+            "https://esfandiyarco.ir/"
+            "https://esfandiyarco.ir/contact/"
+            "https://esfandiyarco.ir/about/"
+            "https://esfandiyarco.ir/digital-services/"
+            "https://esfandiyarco.ir/services/social-security/"
+          )
+          failed=0
+          report=""
+          for url in "${urls[@]}"; do
+            result=$(curl -L -sS --max-time 25 -o /dev/null -w "%{http_code}" "$url")
+            code=$?
+            if [ "$code" -ne 0 ] || [ "$result" != "200" ]; then
+              failed=1
+              report+=$'\n❌ '"$url"$' — HTTP '"$result"$' (curl exit '"$code"$')'
+            else
+              report+=$'\n✅ '"$url"$' — HTTP 200'
+            fi
+          done
+          echo "failed=$failed" >> "$GITHUB_OUTPUT"
+          {
+            echo "report<<EOF"
+            echo "$report"
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Open or update outage incident
+        if: steps.health.outputs.failed == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          REPORT: ${{ steps.health.outputs.report }}
+        shell: bash
+        run: |
+          existing=$(gh issue list --repo "$GH_REPO" --state open --label site-health-outage --json number --jq '.[0].number')
+          if [ -z "$existing" ]; then
+            gh issue create --repo "$GH_REPO" --title "Site health alert: esfandiyarco.ir" --label site-health-outage --body "Automated monitoring detected a failure.\n\n$REPORT"
+            echo "NEW_INCIDENT=true" >> "$GITHUB_ENV"
+          else
+            gh issue comment "$existing" --repo "$GH_REPO" --body "Repeated check still detects an issue:\n\n$REPORT"
+            echo "NEW_INCIDENT=false" >> "$GITHUB_ENV"
+          fi
+
+      - name: Notify Telegram about a new outage
+        if: steps.health.outputs.failed == '1' && env.NEW_INCIDENT == 'true'
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          REPORT: ${{ steps.health.outputs.report }}
+        shell: bash
+        run: |
+          if [ -n "$BOT_TOKEN" ] && [ -n "$CHAT_ID" ]; then
+            curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${CHAT_ID}" \
+              --data-urlencode "text=🚨 هشدار سلامت سایت اسفندیار:${REPORT}"
+          else
+            echo "::warning::Telegram secrets are not configured; incident is recorded in GitHub Issues."
+          fi
+
+      - name: Close resolved outage incident
+        if: steps.health.outputs.failed == '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          existing=$(gh issue list --repo "$GH_REPO" --state open --label site-health-outage --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue close "$existing" --repo "$GH_REPO" --comment "Automated checks are passing again. The monitored pages returned HTTP 200."
+            echo "RECOVERED=true" >> "$GITHUB_ENV"
+          fi
+
+      - name: Notify Telegram about recovery
+        if: steps.health.outputs.failed == '0' && env.RECOVERED == 'true'
+        env:
+          BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        shell: bash
+        run: |
+          if [ -n "$BOT_TOKEN" ] && [ -n "$CHAT_ID" ]; then
+            curl -fsS --max-time 20 -X POST "https://api.telegram.org/bot${BOT_TOKEN}/sendMessage" \
+              --data-urlencode "chat_id=${CHAT_ID}" \
+              --data-urlencode "text=✅ سایت اسفندیار دوباره در دسترس است؛ صفحات پایش‌شده پاسخ HTTP 200 می‌دهند."
+          fi
