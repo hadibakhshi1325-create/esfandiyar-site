@@ -990,3 +990,7 @@ border-radius:14px;
 border:1px solid var(--gold);
 margin:0 0 24px
 }
+
+
+/* Basic form honeypot: visually hidden from people, still present for simple bots. */
+.hp-field{position:absolute!important;left:-10000px!important;top:auto!important;width:1px!important;height:1px!important;overflow:hidden!important;}
