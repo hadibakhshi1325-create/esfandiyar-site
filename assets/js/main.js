@@ -11,10 +11,11 @@
     f.addEventListener('submit',function(e){
       e.preventDefault();
       if(f.website_url&&f.website_url.value.trim())return;
-      var name=f.name.value.trim(),phone=norm(f.phone.value);
-      if(!name){st.textContent='لطفاً نام خود را وارد کنید.';f.name.focus();return}
-      if(!/^0\d{10}$/.test(phone)){st.textContent='شماره تماس باید ۱۱ رقم و با صفر شروع شود (مثلاً ۰۹۱۲۱۲۳۴۵۶۷).';f.phone.focus();return}
-      var svc=f.service.options[f.service.selectedIndex].text,d=f.details.value.trim()||'ندارد';
+      var name=f.elements.namedItem('name').value.trim(),phone=norm(f.elements.namedItem('phone').value);
+      if(!name){st.textContent='لطفاً نام خود را وارد کنید.';f.elements.namedItem('name').focus();return}
+      if(!/^0\d{10}$/.test(phone)){st.textContent='شماره تماس باید ۱۱ رقم و با صفر شروع شود (مثلاً ۰۹۱۲۱۲۳۴۵۶۷).';f.elements.namedItem('phone').focus();return}
+      var serviceField=f.elements.namedItem('service'),detailsField=f.elements.namedItem('details');
+      var svc=serviceField.options[serviceField.selectedIndex].text,d=detailsField.value.trim()||'ندارد';
       var msg='سلام، از طریق وب‌سایت موسسه ثبتی و حقوقی اسفندیار درخواست مشاوره دارم.\nنام: '+name+'\nشماره تماس: '+phone+'\nخدمت: '+svc+'\nتوضیحات: '+d;
       var url=f.getAttribute('data-wa')+'?text='+encodeURIComponent(msg);
       var w=window.open(url,'_blank');
