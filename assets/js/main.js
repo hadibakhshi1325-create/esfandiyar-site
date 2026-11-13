@@ -10,6 +10,7 @@
     var st=f.parentNode.querySelector('.status');
     f.addEventListener('submit',function(e){
       e.preventDefault();
+      if(f.website_url&&f.website_url.value.trim())return;
       var name=f.name.value.trim(),phone=norm(f.phone.value);
       if(!name){st.textContent='لطفاً نام خود را وارد کنید.';f.name.focus();return}
       if(!/^0\d{10}$/.test(phone)){st.textContent='شماره تماس باید ۱۱ رقم و با صفر شروع شود (مثلاً ۰۹۱۲۱۲۳۴۵۶۷).';f.phone.focus();return}
