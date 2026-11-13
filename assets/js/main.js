@@ -31,6 +31,7 @@
     }
 
     var status=form.parentElement.querySelector('.status');
+    if(status) status.textContent='فرم آماده ارسال است.';
     form.addEventListener('submit',function(event){
       event.preventDefault();
       try{
@@ -70,7 +71,7 @@
         status.textContent='در حال انتقال به واتساپ…';
         window.location.href=destination;
       }catch(error){
-        status.textContent='ارسال خودکار انجام نشد. صفحه را تازه‌سازی کنید یا مستقیماً با شماره ۰۹۳۷۲۰۸۴۷۲۴ در واتساپ پیام دهید.';
+        if(status) status.textContent='ارسال خودکار انجام نشد. صفحه را تازه‌سازی کنید یا مستقیماً با شماره ۰۹۳۷۲۰۸۴۷۲۴ در واتساپ پیام دهید.';
       }
     });
   });
